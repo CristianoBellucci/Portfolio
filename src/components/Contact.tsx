@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Mail, Github, Linkedin, Twitter, Send } from 'lucide-react'
+import { Mail, Github, Linkedin, Send } from 'lucide-react' // Removed Twitter
 
 const socialLinks = [
   {

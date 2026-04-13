@@ -1,6 +1,6 @@
-import { useRef, useMemo, Suspense } from 'react'
+import { useRef, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { MeshDistortMaterial, Float, Environment, ContactShadows, MeshTransmissionMaterial } from '@react-three/drei'
+import { Float, Environment, ContactShadows, MeshTransmissionMaterial } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import * as THREE from 'three'
 
@@ -21,8 +21,7 @@ function FusedTorusKnot() {
 
   return (
     <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.5}>
-      {/* 
-        By using a TorusKnot with p=1 and q=3, we create a continuous ribbon 
+      {/* By using a TorusKnot with p=1 and q=3, we create a continuous ribbon 
         that twists 3 times, creating beautiful "crescent cutouts" natively. 
       */}
       <group ref={groupRef} position={[0, -0.2, 0]} scale={1.2}>
@@ -40,7 +39,6 @@ function FusedTorusKnot() {
             chromaticAberration={0.03}
             transparent={true}
             color="#4f46e5"
-            // Ensure the material resolves light appropriately
             resolution={1024}
           />
         </mesh>
@@ -77,7 +75,7 @@ function HeroScene() {
         <Environment preset="city" />
         <FusedTorusKnot />
 
-        {/* Soft floor shadow to give that studio / grounded feel from the reference */}
+        {/* Soft floor shadow to give that studio / grounded feel */}
         <ContactShadows
           position={[0, -3.5, 0]}
           opacity={0.8}
@@ -101,7 +99,6 @@ export const Hero = () => {
       id="about"
       className="relative w-full h-screen overflow-hidden flex items-center"
       style={{
-        // A deep gradient mimicking the rich solid backgrounds of the reference
         background: 'linear-gradient(180deg, #1e1b4b 0%, #312e81 40%, #1e1b4b 100%)',
       }}
     >
@@ -119,7 +116,7 @@ export const Hero = () => {
       {/* Overlay Content Box */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pointer-events-none">
 
-        {/* Main Title overlapping the 3D element (left-aligned relative to container, matching reference) */}
+        {/* Main Title */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -128,7 +125,7 @@ export const Hero = () => {
         >
           <h1
             className="text-6xl md:text-8xl lg:text-[7rem] font-bold tracking-tight text-white leading-[0.95] drop-shadow-2xl"
-            style={{ fontFamily: "'Playfair Display', serif" }} // Giving it that elegant serif vibe
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
             CRISTIANO
             <br />
@@ -145,14 +142,13 @@ export const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Right side floating vertical text (like ILLUSTRATION / GENERATIVE DESIGN) */}
+        {/* Right side floating vertical text */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex gap-8 items-center"
         >
-          {/* Vertical rotated text */}
           <div
             className="flex flex-col gap-16"
             style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
@@ -175,7 +171,7 @@ export const Hero = () => {
 
       </div>
 
-      {/* Decorative horizontal thin line & subtle labels (like the bottom edge of reference) */}
+      {/* Decorative footer elements */}
       <div className="absolute bottom-10 left-0 w-full px-6 md:px-12 flex justify-between items-center z-10 pointer-events-none text-white/50 font-mono text-[10px] tracking-widest uppercase">
         <span>© 2026 CRISTIANO BELLUCCI</span>
         <span>ALL RIGHTS RESERVED</span>
