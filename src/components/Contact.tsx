@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Mail, Github, Linkedin, Send } from 'lucide-react' // Removed Twitter
+import { useTranslation } from 'react-i18next'
 
 const socialLinks = [
   {
@@ -21,6 +22,8 @@ const socialLinks = [
 ]
 
 export const Contact = () => {
+  const { t } = useTranslation()
+
   return (
     <section
       id="contact"
@@ -44,27 +47,26 @@ export const Contact = () => {
           {/* Label */}
           <span className="section-label justify-center mb-6 block">
             <span className="w-6 h-px bg-indigo-400" />
-            Let's Connect
+            {t('contact.label')}
             <span className="w-6 h-px bg-indigo-400" />
           </span>
 
           {/* Headline */}
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] mb-6 tracking-tight">
-            Let's build something{' '}
+            {t('contact.title_prefix')}{' '}
             <span
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage: 'linear-gradient(135deg, #818cf8 0%, #6366f1 50%, #4f46e5 100%)',
               }}
             >
-              extraordinary.
+              {t('contact.title_highlight')}
             </span>
           </h2>
 
           {/* Subtext */}
           <p className="text-lg text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed">
-            Whether you need a complex RAG architecture, a sleek web interface, or a
-            robust data pipeline — I'm always open to new collaborations.
+            {t('contact.subtext')}
           </p>
 
           {/* Email CTA */}
@@ -88,14 +90,14 @@ export const Contact = () => {
             {/* Shimmer */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]" />
             <Mail className="w-5 h-5 relative z-10" />
-            <span className="relative z-10">Send me an email</span>
+            <span className="relative z-10">{t('contact.email_cta')}</span>
             <Send className="w-4 h-4 relative z-10" />
           </motion.a>
 
           {/* Divider */}
           <div className="flex items-center gap-4 mb-10">
             <div className="flex-1 h-px bg-slate-800" />
-            <span className="text-xs font-mono text-slate-600 tracking-widest uppercase">or find me elsewhere</span>
+            <span className="text-xs font-mono text-slate-600 tracking-widest uppercase">{t('contact.separator')}</span>
             <div className="flex-1 h-px bg-slate-800" />
           </div>
 
@@ -140,7 +142,7 @@ export const Contact = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            Available for freelance &amp; consulting work
+            {t('contact.availability')}
           </div>
         </motion.div>
       </div>

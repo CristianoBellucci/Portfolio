@@ -1,0 +1,89 @@
+{
+  "nav": {
+    "about": "Chi Sono",
+    "work": "Lavori",
+    "services": "Servizi",
+    "contact": "Contatti",
+    "hireMe": "Assumimi"
+  },
+  "hero": {
+    "status": "Disponibile per nuovi progetti",
+    "greeting": "Ciao, sono",
+    "role": "Creo sistemi per i dati\ne applicazioni web intelligenti.",
+    "description": "Sono un ingegnere specializzato in dati e intelligenza artificiale. Aiuto startup e aziende a trasformare le loro idee più complesse in prodotti concreti, veloci e pronti a crescere.",
+    "cta_primary": "Vedi i miei lavori",
+    "cta_secondary": "Contattami",
+    "tag1": "AI Engineering",
+    "tag2": "Sviluppo Web",
+    "rights": "TUTTI I DIRITTI RISERVATI"
+  },
+  "specialties": {
+    "label": "SERVIZI & COMPETENZE",
+    "title_prefix": "Le mie",
+    "title_highlight": "specializzazioni",
+    "subtitle": "Unisco interfacce chiare e intuitive a sistemi potenti che lavorano sui dati — per costruire prodotti completi, dall'aspetto al motore.",
+    "websites_title": "Siti e App Web",
+    "websites_desc": "Creo siti e applicazioni web veloci, belli e facili da usare, adatti a qualsiasi dispositivo. Dalla semplice landing page alla piattaforma complessa.",
+    "websites_tags": ["React", "Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+    "pipelines_title": "Sistemi per i Dati",
+    "pipelines_desc": "Costruisco sistemi automatici che raccolgono, trasformano e consegnano grandi quantità di dati in modo affidabile e continuo.",
+    "pipelines_tags": ["Python", "SQL", "Airflow", "Cloud", "Spark"],
+    "chatbots_title": "Assistenti Virtuali",
+    "chatbots_desc": "Creo assistenti conversazionali intelligenti integrabili in qualsiasi piattaforma — dal supporto clienti agli agenti completamente autonomi.",
+    "chatbots_tags": ["OpenAI API", "LangChain", "LangGraph", "Dialogflow"],
+    "rag_title": "AI su Dati Privati",
+    "rag_desc": "Sistemi che collegano l'intelligenza artificiale ai tuoi documenti e dati interni, per ottenere risposte precise e aggiornate — anche su archivi enormi.",
+    "rag_tags": ["Database Vettoriali", "Embedding", "LLM", "Pinecone", "Chroma"]
+  },
+  "featured": {
+    "label": "PROGETTI POSSIBILI",
+    "title_prefix": "Cosa posso",
+    "title_highlight": "sviluppare per te.",
+    "view_project": "Parliamone",
+    "cta_banner": {
+      "label": "Hai un'idea?",
+      "title": "Lavoriamo insieme",
+      "button": "Contattami"
+    },
+    "hero_label": "SITO WEB AZIENDALE",
+    "hero_title": "Il Sito Web per la tua Attività",
+    "hero_description": "Hai una piccola azienda e vuoi farti trovare online? Posso progettare e sviluppare da zero il tuo nuovo sito web, con un design accattivante, moderno e completamente ottimizzato per smartphone e motori di ricerca.",
+    "hero_tags": ["Siti Vetrina", "E-commerce", "Landing Page", "Design Responsive"],
+    "hero_cta": "Iniziamo il tuo progetto",
+    "projects": [
+      {
+        "id": "web-design",
+        "label": "SVILUPPO PYTHON",
+        "title": "Automazioni e Script Python",
+        "description": "Automatizza processi ripetitivi o crea script su misura. Dalla raccolta automatica dei dati alla sincronizzazione dei sistemi, posso aiutarti a risparmiare tempo prezioso.",
+        "tags": ["Automazione", "Scripting", "Web Scraping", "API"]
+      },
+      {
+        "id": "data-pipeline",
+        "label": "OTTIMIZZAZIONE",
+        "title": "Miglioramento Sistemi Esistenti",
+        "description": "Hai già un sito o un applicativo ma è lento, poco intuitivo o pieno di bug? Posso analizzarlo, riscrivere il codice obsoleto e ottimizzarne radicalmente le performance.",
+        "tags": ["Restyling", "Performance", "Refactoring", "SEO"]
+      },
+      {
+        "id": "ai-chatbots",
+        "label": "INTELLIGENZA ARTIFICIALE",
+        "title": "Chatbot & Architetture AI",
+        "description": "Progettazione e sviluppo di sistemi intelligenti, dai chatbot conversazionali personalizzati in grado di assistere i tuoi clienti, fino a complesse architetture AI integrate nei tuoi processi aziendali.",
+        "tags": ["Chatbot", "LLM", "Architetture AI", "Automazione"]
+      }
+    ]
+  },
+  "contact": {
+    "label": "Parliamoci",
+    "title_prefix": "Costruiamo qualcosa di",
+    "title_highlight": "straordinario.",
+    "subtext": "Hai un progetto in mente? Che si tratti di un sito, un'app o un sistema legato ai dati — sono sempre disponibile a valutare nuove collaborazioni.",
+    "email_cta": "Contattami",
+    "separator": "o trovami su",
+    "availability": "Disponibile per lavori freelance e consulenze"
+  },
+  "footer": {
+    "built_with": "Realizzato con ❤️ usando React, Tailwind e Framer Motion"
+  }
+}

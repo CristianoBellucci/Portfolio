@@ -1,0 +1,89 @@
+{
+  "nav": {
+    "about": "About",
+    "work": "Work",
+    "services": "Services",
+    "contact": "Contact",
+    "hireMe": "Hire Me"
+  },
+  "hero": {
+    "status": "Available for new projects",
+    "greeting": "Hi, I'm",
+    "role": "I craft data ecosystems\nand intelligent web apps.",
+    "description": "I'm a Data & AI Engineer specializing in python and typescript ecosystems. I help startups and enterprises turn their complex ideas into high-performing, scalable solutions.",
+    "cta_primary": "See my work",
+    "cta_secondary": "Get in touch",
+    "tag1": "AI Engineering",
+    "tag2": "Web Development",
+    "rights": "ALL RIGHTS RESERVED"
+  },
+  "specialties": {
+    "label": "SERVICES & EXPERTISE",
+    "title_prefix": "Areas of",
+    "title_highlight": "Expertise",
+    "subtitle": "Bridging the gap between beautiful user interfaces and complex, data-driven architectures — one solution at a time.",
+    "websites_title": "Modern Websites",
+    "websites_desc": "Immersive, responsive, and performance-optimized web applications with premium aesthetics. From landing pages to full-stack platforms.",
+    "websites_tags": ["React", "Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+    "pipelines_title": "Data Pipelines",
+    "pipelines_desc": "Robust, scalable ETL systems for handling large volumes of complex data seamlessly. From ingestion to transformation to delivery.",
+    "pipelines_tags": ["Python", "SQL", "Airflow", "Cloud", "Spark"],
+    "chatbots_title": "Smart Chatbots",
+    "chatbots_desc": "Conversational interfaces powered by advanced NLP, seamlessly integrated into any platform. From customer support bots to fully autonomous agents.",
+    "chatbots_tags": ["OpenAI API", "LangChain", "LangGraph", "Dialogflow"],
+    "rag_title": "RAG Solutions",
+    "rag_desc": "Retrieval-Augmented Generation systems that connect LLMs to your private knowledge base, enabling accurate, grounded, and up-to-date AI responses at any scale.",
+    "rag_tags": ["Vector DBs", "Embeddings", "LLMs", "Pinecone", "Chroma"]
+  },
+  "featured": {
+    "label": "POSSIBLE PROJECTS",
+    "title_prefix": "What I can",
+    "title_highlight": "build for you.",
+    "view_project": "Let's Discuss",
+    "cta_banner": {
+      "label": "Got an idea?",
+      "title": "Let's work together",
+      "button": "Contact me"
+    },
+    "hero_label": "BUSINESS WEBSITE",
+    "hero_title": "A Modern Website for Your Business",
+    "hero_description": "Do you have a small business and want to establish your online presence? I can design and build your new website from scratch, with a stunning, modern look that is fully optimized for mobile devices and search engines.",
+    "hero_tags": ["Small Business", "E-commerce", "Landing Pages", "Responsive Design"],
+    "hero_cta": "Start your project",
+    "projects": [
+      {
+        "id": "web-design",
+        "label": "PYTHON DEV",
+        "title": "Python Automations & Scripts",
+        "description": "Automate repetitive business processes or develop custom scripts for your specific needs. From data collection to automated processing, I can help you save valuable time.",
+        "tags": ["Automation", "Scripting", "Web Scraping", "APIs"]
+      },
+      {
+        "id": "data-pipeline",
+        "label": "OPTIMIZATION",
+        "title": "Revamp Existing Systems",
+        "description": "Do you already have a website or app that is slow, clunky, or buggy? I can audit it, rewrite outdated code, and drastically improve its speed and user experience.",
+        "tags": ["Restyling", "Performance", "Refactoring", "SEO"]
+      },
+      {
+        "id": "ai-chatbots",
+        "label": "ARTIFICIAL INTELLIGENCE",
+        "title": "Chatbots & AI Architectures",
+        "description": "Design and development of intelligent systems, from custom conversational chatbots capable of supporting your customers, to complex AI architectures integrated into your workflows.",
+        "tags": ["Chatbots", "LLM", "AI Architectures", "Automation"]
+      }
+    ]
+  },
+  "contact": {
+    "label": "Let's Connect",
+    "title_prefix": "Let's build something",
+    "title_highlight": "extraordinary.",
+    "subtext": "Whether you need a complex RAG architecture, a sleek web interface, or a robust data pipeline — I'm always open to new collaborations.",
+    "email_cta": "Send me an email",
+    "separator": "or find me elsewhere",
+    "availability": "Available for freelance & consulting work"
+  },
+  "footer": {
+    "built_with": "Built with ❤️ using React, Tailwind & Framer Motion"
+  }
+}

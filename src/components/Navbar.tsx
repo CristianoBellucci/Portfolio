@@ -1,19 +1,25 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { Globe, Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#specialties' },
-  { label: 'Services', href: '#featured' },
-  { label: 'Contact', href: '#contact' },
+  { key: 'about', href: '#about' },
+  { key: 'work', href: '#specialties' },
+  { key: 'services', href: '#featured' },
+  { key: 'contact', href: '#contact' },
 ]
 
 export const Navbar = () => {
+  const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [lastY, setLastY] = useState(0)
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language.startsWith('it') ? 'en' : 'it')
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,11 +68,11 @@ export const Navbar = () => {
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 className="relative px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/5 group"
               >
-                {link.label}
+                {t(`nav.${link.key}`)}
                 <span className="absolute bottom-1 left-4 right-4 h-px bg-indigo-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </a>
             ))}
@@ -74,6 +80,13 @@ export const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={toggleLanguage}
+              className="px-3 py-2 text-sm font-semibold text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 rounded-xl transition-all duration-300 flex items-center gap-2 bg-slate-800/50"
+            >
+              <Globe className="w-4 h-4" />
+              {i18n.language.startsWith('it') ? 'IT' : 'EN'}
+            </button>
             <a
               href="#contact"
               className="px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300"
@@ -84,7 +97,7 @@ export const Navbar = () => {
               onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 24px rgba(99,102,241,0.5)')}
               onMouseLeave={e => (e.currentTarget.style.boxShadow = '')}
             >
-              Hire Me
+              {t('nav.hireMe')}
             </a>
           </div>
 
@@ -118,7 +131,7 @@ export const Navbar = () => {
             <nav className="flex flex-col p-4 gap-1">
               {navLinks.map((link, i) => (
                 <motion.a
-                  key={link.label}
+                  key={link.key}
                   href={link.href}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -126,17 +139,29 @@ export const Navbar = () => {
                   onClick={() => setMobileOpen(false)}
                   className="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 font-medium transition-all"
                 >
-                  {link.label}
+                  {t(`nav.${link.key}`)}
                 </motion.a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setMobileOpen(false)}
-                className="mt-2 px-4 py-3 rounded-xl text-center text-white font-semibold"
-                style={{ background: 'linear-gradient(135deg, #6366f1, #14b8a6)' }}
-              >
-                Hire Me
-              </a>
+              <div className="flex gap-2 mt-2">
+                <button
+                  onClick={() => {
+                    toggleLanguage();
+                    setMobileOpen(false);
+                  }}
+                  className="flex-1 px-4 py-3 rounded-xl text-center text-slate-300 font-semibold border border-slate-700 bg-slate-800/50 hover:bg-slate-700/50"
+                >
+                  <Globe className="w-5 h-5 mx-auto mb-1" />
+                  {i18n.language.startsWith('it') ? 'Italiano' : 'English'}
+                </button>
+                <a
+                  href="#contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex-[2] px-4 py-3 flex items-center justify-center rounded-xl text-center text-white font-semibold"
+                  style={{ background: 'linear-gradient(135deg, #6366f1, #14b8a6)' }}
+                >
+                  {t('nav.hireMe')}
+                </a>
+              </div>
             </nav>
           </motion.div>
         )}

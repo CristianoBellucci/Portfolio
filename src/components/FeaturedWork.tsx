@@ -1,41 +1,25 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ExternalLink, Layers } from 'lucide-react'
 import featuredImg from '../assets/featured-preview.png'
+import { useTranslation } from 'react-i18next'
 
-const projects = [
-  {
-    id: 'rag-platform',
-    label: 'AI / RAG',
-    title: 'Enterprise RAG Platform',
-    description:
-      'A production-grade Retrieval-Augmented Generation system connecting frontier LLMs to enterprise knowledge bases. Processes thousands of documents with semantic search and real-time reranking.',
-    tags: ['Python', 'LangChain', 'Pinecone', 'FastAPI'],
-    accentColor: '#d946ef',
-    href: '#contact',
-  },
-  {
-    id: 'web-design',
-    label: 'Design & Dev',
-    title: 'Modern Web Experiences',
-    description:
-      'Premium, high-performance web applications with a focus on immersive aesthetics and fluid interactions. Built with accessibility and conversion-driven UX at the core.',
-    tags: ['Next.js', 'Framer Motion', 'TypeScript', 'Tailwind'],
-    accentColor: '#6366f1',
-    href: '#contact',
-  },
-  {
-    id: 'data-pipeline',
-    label: 'Pipeline',
-    title: 'Real-Time Data Pipeline',
-    description:
-      'End-to-end ETL pipeline ingesting millions of events per day from multiple sources, with automated quality checks and delivery to downstream analytics systems.',
-    tags: ['Python', 'Apache Airflow', 'PostgreSQL', 'GCP'],
-    accentColor: '#14b8a6',
-    href: '#contact',
-  },
-]
+const projectStyles: Record<string, { accentColor: string; href: string }> = {
+  'rag-platform': { accentColor: '#d946ef', href: '#contact' },
+  'web-design': { accentColor: '#6366f1', href: '#contact' },
+  'data-pipeline': { accentColor: '#14b8a6', href: '#contact' },
+  'ai-chatbots': { accentColor: '#f43f5e', href: '#contact' },
+}
 
 export const FeaturedWork = () => {
+  const { t } = useTranslation()
+  const projects = t('featured.projects', { returnObjects: true }) as Array<{
+    id: string
+    label: string
+    title: string
+    description: string
+    tags: string[]
+  }>
+
   return (
     <section
       id="featured"
@@ -60,15 +44,15 @@ export const FeaturedWork = () => {
         >
           <span className="section-label mb-4 block">
             <Layers className="w-3.5 h-3.5" />
-            Featured Work
+            {t('featured.label')}
           </span>
           <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
-            Built to{' '}
+            {t('featured.title_prefix')}{' '}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: 'linear-gradient(135deg, #5eead4, #14b8a6)' }}
             >
-              Perform
+              {t('featured.title_highlight')}
             </span>
           </h2>
         </motion.div>
@@ -125,25 +109,16 @@ export const FeaturedWork = () => {
                   border: '1px solid rgba(217,70,239,0.3)',
                 }}
               >
-                AI / RAG
+                {t('featured.hero_label')}
               </div>
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
-                Enterprise RAG
-                <br />
-                <span
-                  className="bg-clip-text text-transparent"
-                  style={{ backgroundImage: 'linear-gradient(135deg, #a78bfa, #d946ef)' }}
-                >
-                  Platform
-                </span>
+                {t('featured.hero_title')}
               </h3>
               <p className="text-slate-400 leading-relaxed mb-8 text-sm md:text-base">
-                A production-grade Retrieval-Augmented Generation system connecting frontier LLMs
-                to enterprise knowledge bases. Semantic search, real-time reranking, and streaming
-                responses — all deployed on scalable cloud infrastructure.
+                {t('featured.hero_description')}
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
-                {['Python', 'LangChain', 'Pinecone', 'FastAPI', 'React'].map((tag) => (
+                {(t('featured.hero_tags', { returnObjects: true }) as string[]).map((tag) => (
                   <span key={tag} className="tag-pill">{tag}</span>
                 ))}
               </div>
@@ -152,7 +127,7 @@ export const FeaturedWork = () => {
                 href="#contact"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors group/link"
               >
-                Discuss this project
+                {t('featured.hero_cta')}
                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -183,7 +158,7 @@ export const FeaturedWork = () => {
                 border: '1px solid rgba(51, 65, 85, 0.5)',
               }}
               onMouseEnter={(e) => {
-                const accent = project.accentColor;
+                const accent = projectStyles[project.id]?.accentColor || '#6366f1';
                 e.currentTarget.style.borderColor = `${accent}88`
                 e.currentTarget.style.boxShadow = `0 24px 60px rgba(0,0,0,0.6), 0 0 30px ${accent}22`
               }}
@@ -193,11 +168,11 @@ export const FeaturedWork = () => {
               }}
             >
               {/* Accent dot */}
-              <div className="w-2 h-2 rounded-full mb-5" style={{ backgroundColor: project.accentColor }} />
+              <div className="w-2 h-2 rounded-full mb-5" style={{ backgroundColor: projectStyles[project.id]?.accentColor || '#6366f1' }} />
 
               <div
                 className="text-xs font-mono font-semibold tracking-widest uppercase mb-3"
-                style={{ color: project.accentColor }}
+                style={{ color: projectStyles[project.id]?.accentColor || '#6366f1' }}
               >
                 {project.label}
               </div>
@@ -214,12 +189,12 @@ export const FeaturedWork = () => {
                 ))}
               </div>
               <a
-                href={project.href}
+                href={projectStyles[project.id]?.href || '#contact'}
                 className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
-                style={{ color: project.accentColor }}
+                style={{ color: projectStyles[project.id]?.accentColor || '#6366f1' }}
               >
                 <ExternalLink className="w-3.5 h-3.5" />
-                Get in touch
+                {t('featured.view_project')}
               </a>
             </motion.div>
           ))}
@@ -238,15 +213,15 @@ export const FeaturedWork = () => {
           }}
         >
           <div>
-            <p className="section-label mb-2">Have a project in mind?</p>
-            <h4 className="text-2xl font-bold text-white">Let's work together</h4>
+            <p className="section-label mb-2">{t('featured.cta_banner.label')}</p>
+            <h4 className="text-2xl font-bold text-white">{t('featured.cta_banner.title')}</h4>
           </div>
           <a
             id="featured-cta-contact"
             href="#contact"
             className="btn-primary whitespace-nowrap flex-shrink-0"
           >
-            Start a Conversation
+            {t('featured.cta_banner.button')}
             <ArrowRight className="w-4 h-4" />
           </a>
         </motion.div>

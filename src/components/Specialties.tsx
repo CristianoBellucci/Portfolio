@@ -1,68 +1,22 @@
 import { motion } from 'framer-motion'
 import { Globe, Database, Bot, BrainCircuit } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-interface Specialty {
-  id: string
-  title: string
-  description: string
-  icon: React.ReactNode
-  tags: string[]
-  colSpan: string
-  accentColor: string
-  glowColor: string
-  borderHover: string
-}
-
-const specialties: Specialty[] = [
-  {
-    id: 'websites',
-    title: 'Modern Websites',
-    description:
-      'Immersive, responsive, and performance-optimized web applications with premium aesthetics. I craft digital experiences that leave a lasting impression—from landing pages to full-stack platforms.',
-    icon: <Globe className="w-7 h-7" />,
-    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
-    colSpan: 'md:col-span-2',
-    accentColor: '#6366f1',
-    glowColor: 'rgba(99,102,241,0.12)',
-    borderHover: 'rgba(99,102,241,0.4)',
-  },
-  {
-    id: 'pipelines',
-    title: 'Data Pipelines',
-    description:
-      'Robust, scalable ETL systems for handling large volumes of complex data seamlessly. From ingestion to transformation to delivery.',
-    icon: <Database className="w-7 h-7" />,
-    tags: ['Python', 'SQL', 'Airflow', 'Cloud', 'Spark'],
-    colSpan: 'md:col-span-1',
-    accentColor: '#14b8a6',
-    glowColor: 'rgba(20,184,166,0.12)',
-    borderHover: 'rgba(20,184,166,0.4)',
-  },
-  {
-    id: 'chatbots',
-    title: 'Smart Chatbots',
-    description:
-      'Conversational interfaces powered by advanced NLP, seamlessly integrated into any platform.  From customer support bots to fully autonomous agents.',
-    icon: <Bot className="w-7 h-7" />,
-    tags: ['OpenAI API', 'LangChain', 'LangGraph', 'Dialogflow'],
-    colSpan: 'md:col-span-1',
-    accentColor: '#818cf8',
-    glowColor: 'rgba(129,140,248,0.12)',
-    borderHover: 'rgba(129,140,248,0.4)',
-  },
-  {
-    id: 'rag',
-    title: 'RAG Solutions',
-    description:
-      'Retrieval-Augmented Generation systems that connect LLMs to your private knowledge base, enabling accurate, grounded, and up-to-date AI responses at any scale.',
-    icon: <BrainCircuit className="w-7 h-7" />,
-    tags: ['Vector DBs', 'Embeddings', 'LLMs', 'Pinecone', 'Chroma'],
-    colSpan: 'md:col-span-2',
-    accentColor: '#d946ef',
-    glowColor: 'rgba(217,70,239,0.12)',
-    borderHover: 'rgba(217,70,239,0.4)',
-  },
+const icons = [
+  <Globe className="w-7 h-7" />,
+  <Database className="w-7 h-7" />,
+  <Bot className="w-7 h-7" />,
+  <BrainCircuit className="w-7 h-7" />,
 ]
+
+const styles = [
+  { colSpan: 'md:col-span-2', accentColor: '#6366f1', glowColor: 'rgba(99,102,241,0.12)', borderHover: 'rgba(99,102,241,0.4)' },
+  { colSpan: 'md:col-span-1', accentColor: '#14b8a6', glowColor: 'rgba(20,184,166,0.12)', borderHover: 'rgba(20,184,166,0.4)' },
+  { colSpan: 'md:col-span-1', accentColor: '#818cf8', glowColor: 'rgba(129,140,248,0.12)', borderHover: 'rgba(129,140,248,0.4)' },
+  { colSpan: 'md:col-span-2', accentColor: '#d946ef', glowColor: 'rgba(217,70,239,0.12)', borderHover: 'rgba(217,70,239,0.4)' },
+]
+
+const ids = ['websites', 'pipelines', 'chatbots', 'rag']
 
 const containerVariants = {
   hidden: {},
@@ -75,6 +29,17 @@ const cardVariants = {
 }
 
 export const Specialties = () => {
+  const { t } = useTranslation()
+
+  const specialties = ids.map((id, i) => ({
+    id,
+    title: t(`specialties.${id}_title`),
+    description: t(`specialties.${id}_desc`),
+    tags: t(`specialties.${id}_tags`, { returnObjects: true }) as string[],
+    icon: icons[i],
+    ...styles[i],
+  }))
+
   return (
     <section id="specialties" className="relative py-32 overflow-hidden" style={{ background: 'linear-gradient(180deg, #1e1b4b 0%, #17153a 100%)' }}>
       {/* Subtle top separator line */}
@@ -94,20 +59,19 @@ export const Specialties = () => {
         >
           <span className="section-label mb-4 block">
             <span className="w-6 h-px bg-indigo-400" />
-            What I Do
+            {t('specialties.label')}
           </span>
           <h2 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
-            Areas of{' '}
+            {t('specialties.title_prefix')}{' '}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: 'linear-gradient(135deg, #818cf8, #6366f1)' }}
             >
-              Expertise
+              {t('specialties.title_highlight')}
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
-            Bridging the gap between beautiful user interfaces and complex,
-            data-driven architectures — one solution at a time.
+            {t('specialties.subtitle')}
           </p>
         </motion.div>
 
@@ -119,7 +83,7 @@ export const Specialties = () => {
           viewport={{ once: true, margin: '-60px' }}
           className="grid grid-cols-1 md:grid-cols-3 gap-5"
         >
-          {specialties.map((item) => (
+          {specialties.map((item, index) => (
             <motion.div
               key={item.id}
               id={`specialty-${item.id}`}
@@ -154,7 +118,7 @@ export const Specialties = () => {
                 className="absolute top-6 right-7 font-mono text-xs font-bold opacity-20 group-hover:opacity-40 transition-opacity"
                 style={{ color: item.accentColor }}
               >
-                0{specialties.indexOf(item) + 1}
+                0{index + 1}
               </div>
 
               <div className="relative z-10 flex flex-col h-full space-y-5">
@@ -182,7 +146,7 @@ export const Specialties = () => {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {item.tags.map((tag) => (
+                  {Array.isArray(item.tags) && item.tags.map((tag) => (
                     <span key={tag} className="tag-pill">
                       {tag}
                     </span>

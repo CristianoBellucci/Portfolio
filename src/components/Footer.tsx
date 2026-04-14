@@ -1,11 +1,14 @@
+import { useTranslation } from 'react-i18next'
+
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#specialties' },
-  { label: 'Services', href: '#featured' },
-  { label: 'Contact', href: '#contact' },
+  { key: 'about', href: '#about' },
+  { key: 'work', href: '#specialties' },
+  { key: 'services', href: '#featured' },
+  { key: 'contact', href: '#contact' },
 ]
 
 export const Footer = () => {
+  const { t } = useTranslation()
   const year = new Date().getFullYear()
 
   return (
@@ -38,11 +41,11 @@ export const Footer = () => {
           <nav className="flex flex-wrap justify-center gap-6">
             {navLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 className="text-sm text-slate-500 hover:text-slate-300 transition-colors duration-200"
               >
-                {link.label}
+                {t(`nav.${link.key}`)}
               </a>
             ))}
           </nav>
@@ -56,7 +59,7 @@ export const Footer = () => {
         {/* Bottom accent line */}
         <div className="mt-8 pt-8 border-t border-slate-800/50 flex justify-center">
           <p className="text-xs text-slate-700">
-            Built with ❤️ using React, Tailwind & Framer Motion
+            {t('footer.built_with')}
           </p>
         </div>
       </div>

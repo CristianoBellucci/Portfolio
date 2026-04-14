@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, Environment, ContactShadows, MeshTransmissionMaterial } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import * as THREE from 'three'
+import { useTranslation } from 'react-i18next'
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    3D Scene — Centered Object with Floor
@@ -94,6 +95,8 @@ function HeroScene() {
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 export const Hero = () => {
+  const { t } = useTranslation()
+
   return (
     <section
       id="about"
@@ -137,7 +140,7 @@ export const Hero = () => {
               href="#specialties"
               className="inline-flex items-center justify-center px-6 py-3 border border-white/30 text-white font-medium text-sm tracking-widest uppercase hover:bg-white hover:text-indigo-900 transition-colors"
             >
-              Explore Work
+              {t('hero.cta_primary')}
             </a>
           </div>
         </motion.div>
@@ -155,14 +158,14 @@ export const Hero = () => {
           >
             <div className="flex items-center gap-4">
               <span className="text-white/80 font-mono text-xs tracking-[0.3em] uppercase">
-                AI Engineering
+                {t('hero.tag1')}
               </span>
               <div className="w-px h-8 bg-white/30" />
             </div>
 
             <div className="flex items-center gap-4">
               <span className="text-white/80 font-mono text-xs tracking-[0.3em] uppercase">
-                Web Development
+                {t('hero.tag2')}
               </span>
               <div className="w-px h-8 bg-white/30" />
             </div>
@@ -173,8 +176,8 @@ export const Hero = () => {
 
       {/* Decorative footer elements */}
       <div className="absolute bottom-10 left-0 w-full px-6 md:px-12 flex justify-between items-center z-10 pointer-events-none text-white/50 font-mono text-[10px] tracking-widest uppercase">
-        <span>© 2026 CRISTIANO BELLUCCI</span>
-        <span>ALL RIGHTS RESERVED</span>
+        <span>© {new Date().getFullYear()} CRISTIANO BELLUCCI</span>
+        <span>{t('hero.rights')}</span>
         <div className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-12 bg-white/20" />
       </div>
 
